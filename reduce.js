@@ -111,13 +111,13 @@ let max = 0;
 let key = {};
 
 const biggest = students.reduce((acc, curr) => {
-  let val = curr.results.english;
-  if (max < val) {
-    max = val;
+  //let val = curr.results.english;
+  if (max < curr.results.english) {
+    max = curr.results.english;
     key = curr;
   } 
   let {name} = key;
-  acc = {...acc, name, 'max': val};
+  acc = {...acc, name, 'max': max};
   return acc;
 }, {});
 
