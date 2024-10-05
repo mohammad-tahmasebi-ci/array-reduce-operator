@@ -96,15 +96,29 @@ let students = [
       results: {science: 93, english: 87, art: 95},
   }
 ];
+/*
+const biggest = students.reduce((acc, curr) => {
+  return acc > curr.results.english ? acc : curr.results.english;
+}, {});
+
+console.log(biggest);
+let student = students.filter(item => item.results.english === biggest);
+let result = {'name': student[0].name, 'max': biggest};
+console.log(result);
+*/
+
+let max = 0;
+let key = {};
 
 const biggest = students.reduce((acc, curr) => {
-  let aname = '';
-  let max = Math.max(acc, curr.results.english);
-  if (curr.results.english === max) { 
-    aname = curr.name; 
-  }
-  console.log(aname, max);
-  return {...acc, [curr.name]: aname, max: max};
+  let val = curr.results.english;
+  if (max < val) {
+    max = val;
+    key = curr;
+  } 
+  let {name} = key;
+  acc = {...acc, name, 'max': val};
+  return acc;
 }, {});
 
 console.log(biggest);
