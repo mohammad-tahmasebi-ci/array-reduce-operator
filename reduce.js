@@ -106,7 +106,7 @@ let student = students.filter(item => item.results.english === biggest);
 let result = {'name': student[0].name, 'max': biggest};
 console.log(result);
 */
-
+/*
 let max = 0;
 let key = {};
 
@@ -119,6 +119,14 @@ const biggest = students.reduce((acc, curr) => {
   let {name} = key;
   acc = {...acc, name, 'max': max};
   return acc;
-}, {});
+}, {name: '', max: 0});
+
+console.log(biggest);
+*/
+
+const biggest = students.reduce((acc, curr) => {
+  acc = acc.max > curr.results.english ? acc: {name: curr.name, max: curr.results.english};
+  return acc;
+}, {name: '', max: 0});
 
 console.log(biggest);
